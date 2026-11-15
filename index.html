@@ -13,27 +13,33 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f2f7ee;--surface:#fafdf6;--surface2:#e6f0df;--line:#d2e1ca;--ink:#17261a;--muted:#587059;--pri:#3f7f43;--on-pri:#fff;--pri-c:#cfe8c8;--on-pri-c:#0c3412;--danger:#b5372f;--glass:rgba(242,247,238,.78);color-scheme:light}
-[data-theme=dark]{--bg:#0f180f;--surface:#162216;--surface2:#1e2e1f;--line:#2b402c;--ink:#e4efe0;--muted:#98ad98;--pri:#98d493;--on-pri:#0b2c0e;--pri-c:#244a27;--on-pri-c:#d2f0cc;--danger:#f0877f;--glass:rgba(15,24,15,.78);color-scheme:dark}
+:root{--bg:#f2f7ee;--surface:#fafdf6;--surface2:#e6f0df;--line:#d2e1ca;--ink:#17261a;--muted:#587059;--pri:#3f7f43;--on-pri:#fff;--pri-c:#cfe8c8;--on-pri-c:#0c3412;--danger:#b5372f;--glass:rgba(242,247,238,.78);--card-bg:var(--surface);--card-blur:0px;--sheet-bg:var(--surface);--glow:transparent;color-scheme:light}
+[data-theme=dark]{--bg:#0f180f;--surface:#162216;--surface2:#1e2e1f;--line:#2b402c;--ink:#e4efe0;--muted:#98ad98;--pri:#98d493;--on-pri:#0b2c0e;--pri-c:#244a27;--on-pri-c:#d2f0cc;--danger:#f0877f;--glass:rgba(15,24,15,.78);--card-bg:var(--surface);--card-blur:0px;--sheet-bg:var(--surface);--glow:transparent;color-scheme:dark}
+[data-glass=on]{--glass:rgba(242,247,238,.52);--card-bg:rgba(250,253,246,.48);--card-blur:14px;--sheet-bg:rgba(250,253,246,.55);--glow:radial-gradient(ellipse 80% 55% at 50% 115%,rgba(255,255,255,.4),transparent 65%),radial-gradient(ellipse 55% 35% at 8% 0%,rgba(255,255,255,.14),transparent 50%)}
+[data-theme=dark][data-glass=on]{--glass:rgba(15,24,15,.48);--card-bg:rgba(22,34,22,.5);--card-blur:16px;--sheet-bg:rgba(22,34,22,.55);--glow:radial-gradient(ellipse 80% 55% at 50% 115%,rgba(152,212,147,.1),transparent 65%),radial-gradient(ellipse 50% 30% at 92% 0%,rgba(255,255,255,.05),transparent 45%)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "Readex Pro",Tahoma,"Segoe UI",system-ui,sans-serif;min-height:100vh;transition:background .25s,color .25s}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "Readex Pro",Tahoma,"Segoe UI",system-ui,sans-serif;min-height:100vh;transition:background .35s,color .35s;background-image:var(--glow);background-attachment:fixed}
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer;border:0;background:none}
 :focus-visible{outline:3px solid var(--pri);outline-offset:2px}
 .ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .app{max-width:720px;margin:0 auto;padding:0 16px calc(env(safe-area-inset-bottom,0px) + 32px)}
-.appbar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 10px) 0 10px;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.appbar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:8px;padding:calc(env(safe-area-inset-top,0px) + 10px) 0 10px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);transition:background .35s,backdrop-filter .35s}
 .appbar h1{flex:1;margin:0;font-size:1.15rem;font-weight:600}
-.iconbtn{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);color:var(--ink);transition:transform .15s,background .2s}
-.iconbtn:active{transform:scale(.92)}
+.iconbtn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);color:var(--ink);transition:transform .18s cubic-bezier(.2,.8,.2,1),background .25s,box-shadow .25s}
+.iconbtn:active{transform:scale(.9)}
+.iconbtn.soft{background:rgba(255,255,255,.55);box-shadow:0 2px 10px rgba(0,0,0,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+[data-theme=dark] .iconbtn.soft{background:rgba(30,46,31,.7);box-shadow:0 2px 12px rgba(0,0,0,.25)}
 .logo{width:44px;height:44px;border-radius:15px;background:var(--pri);color:var(--on-pri);display:grid;place-items:center}
 .hero{padding:8px 4px 18px}
 .hero .school{font-weight:600;font-size:1.05rem}
 .hero .cls{color:var(--muted);font-size:.95rem}
 .hero .date{margin-top:14px;font-size:1.7rem;font-weight:700;line-height:1.3;letter-spacing:-.2px}
 .hero .hijri{color:var(--muted);font-size:.9rem}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:18px;margin-bottom:14px}
+.card{background:var(--card-bg);border:1px solid var(--line);border-radius:28px;padding:18px;margin-bottom:14px;backdrop-filter:blur(var(--card-blur));-webkit-backdrop-filter:blur(var(--card-blur));transition:background .35s,backdrop-filter .35s,box-shadow .35s}
+[data-glass=on] .card{box-shadow:0 8px 32px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.35);border-color:rgba(255,255,255,.25)}
+[data-theme=dark][data-glass=on] .card{box-shadow:0 8px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}
 .status{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:.88rem}
 .badge{display:inline-flex;align-items:center;gap:6px;padding:3px 11px;border-radius:99px;background:var(--pri-c);color:var(--on-pri-c);font-size:.8rem;font-weight:500}
 .badge.warn{background:#f6e3c2;color:#5c3b00}[data-theme=dark] .badge.warn{background:#4a3712;color:#ffe3a8}
@@ -60,7 +66,7 @@ button{cursor:pointer;border:0;background:none}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none}
 .chip{flex:none;min-height:44px;padding:0 18px;border-radius:99px;background:var(--surface2);font-weight:500}
 .chip.on{background:var(--pri);color:var(--on-pri)}
-.tw{overflow-x:auto;border-radius:20px;border:1px solid var(--line);background:var(--surface)}
+.tw{overflow-x:auto;border-radius:20px;border:1px solid var(--line);background:var(--card-bg);backdrop-filter:blur(var(--card-blur));-webkit-backdrop-filter:blur(var(--card-blur));transition:background .35s,backdrop-filter .35s}
 table{border-collapse:collapse;width:100%;min-width:430px;font-size:.88rem}
 th,td{padding:10px 6px;text-align:center;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
 tr:last-child th,tr:last-child td{border-bottom:0}
@@ -73,7 +79,7 @@ td.e{color:var(--muted)}
 .notice .big{color:var(--ink);font-weight:600;font-size:1.1rem}
 .skel{height:52px;border-radius:18px;background:linear-gradient(90deg,var(--surface2),var(--surface),var(--surface2));background-size:200% 100%;animation:sh 1.3s linear infinite;margin-bottom:8px}
 @keyframes sh{to{background-position:-200% 0}}
-.arch{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:22px;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.arch{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:22px;background:var(--card-bg);border:1px solid var(--line);margin-bottom:10px;backdrop-filter:blur(var(--card-blur));-webkit-backdrop-filter:blur(var(--card-blur));transition:background .35s,backdrop-filter .35s}
 .arch .i{flex:1}.arch .i b{display:block}.arch .i span{font-size:.85rem;color:var(--muted)}
 .erow{display:grid;grid-template-columns:36px 1fr 44px;gap:8px;align-items:center;margin-bottom:8px}
 .erow .n{width:36px;height:36px;border-radius:12px;background:var(--surface2);display:grid;place-items:center;font-weight:600;font-size:.9rem}
@@ -87,18 +93,58 @@ summary{min-height:46px;display:flex;align-items:center;font-weight:500;cursor:p
 .trow{display:grid;grid-template-columns:30px 1fr 1fr;gap:8px;align-items:center;margin-bottom:8px}
 .trow input{padding:0 8px;text-align:center}
 .stick{position:sticky;bottom:0;display:grid;grid-template-columns:1fr 1.4fr;gap:10px;padding:12px 0 calc(env(safe-area-inset-bottom,0px) + 8px);background:linear-gradient(transparent,var(--bg) 30%)}
-.scrim{position:fixed;inset:0;z-index:20;background:rgba(10,20,10,.5);display:flex;align-items:flex-end;justify-content:center;animation:fd .18s}
-.sheet{width:100%;max-width:560px;max-height:88vh;overflow:auto;background:var(--surface);border-radius:32px 32px 0 0;padding:22px 18px calc(env(safe-area-inset-bottom,0px) + 22px);animation:up .24s cubic-bezier(.2,.8,.2,1)}
-@media(min-width:700px){.scrim{align-items:center}.sheet{border-radius:32px}}
+.scrim{position:fixed;inset:0;z-index:20;background:rgba(10,20,10,.45);display:flex;align-items:flex-end;justify-content:center;animation:fd .22s;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.sheet{width:100%;max-width:560px;max-height:88vh;overflow:auto;background:var(--sheet-bg);border-radius:32px 32px 0 0;padding:22px 18px calc(env(safe-area-inset-bottom,0px) + 22px);animation:slideUp .34s cubic-bezier(.2,.85,.2,1);backdrop-filter:blur(18px) saturate(1.25);-webkit-backdrop-filter:blur(18px) saturate(1.25);border:1px solid rgba(255,255,255,.18);box-shadow:0 -12px 40px rgba(0,0,0,.12);will-change:transform}
+[data-theme=dark] .sheet{border-color:rgba(255,255,255,.06);box-shadow:0 -12px 40px rgba(0,0,0,.4)}
+@media(min-width:700px){.scrim{align-items:center}.sheet{border-radius:32px;animation:scaleIn .28s cubic-bezier(.2,.85,.2,1)}}
 .sheet h3{margin:0 0 6px;font-size:1.2rem}.sheet p{margin:6px 0 14px;color:var(--muted)}
-.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--surface2);padding:5px;border-radius:99px}
-.seg button{min-height:42px;border-radius:99px;font-weight:500}.seg button.on{background:var(--pri);color:var(--on-pri)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--surface2);padding:5px;border-radius:99px;transition:background .3s}
+.seg button{min-height:42px;border-radius:99px;font-weight:500;transition:all .25s cubic-bezier(.2,.8,.2,1)}.seg button.on{background:var(--pri);color:var(--on-pri);transform:scale(1.02)}
 .err{color:var(--danger);font-size:.9rem;min-height:1.4em;margin:8px 0}
-.toast{position:fixed;inset-inline:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);z-index:30;max-width:460px;margin:auto;padding:14px 18px;border-radius:20px;background:var(--ink);color:var(--bg);font-weight:500;animation:up .25s;text-align:center}
+.toast{position:fixed;inset-inline:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);z-index:30;max-width:460px;margin:auto;padding:14px 18px;border-radius:20px;background:var(--ink);color:var(--bg);font-weight:500;animation:slideUp .28s cubic-bezier(.2,.85,.2,1);text-align:center}
 .splash{position:fixed;inset:0;z-index:40;display:grid;place-content:center;justify-items:center;gap:14px;background:var(--bg);transition:opacity .35s}
 .splash .logo{width:84px;height:84px;border-radius:28px}.splash .logo .ic{width:44px;height:44px}
 .splash.out{opacity:0;pointer-events:none}
-@keyframes up{from{transform:translateY(30px);opacity:0}}
+/* Sliding toggle */
+.row-slide{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;border-radius:20px;background:var(--surface2);margin:12px 0;transition:background .3s,transform .25s}
+.row-slide:active{transform:scale(.985)}
+.row-slide .lbl-s{font-weight:500;font-size:.95rem}
+.row-slide .sub{font-size:.8rem;color:var(--muted);margin-top:2px}
+.toggle{position:relative;width:52px;height:32px;border-radius:99px;background:var(--line);flex:none;transition:background .3s cubic-bezier(.2,.8,.2,1);cursor:pointer}
+.toggle.on{background:var(--pri)}
+.toggle::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.18);transition:transform .3s cubic-bezier(.2,.85,.2,1)}
+.toggle.on::after{transform:translateX(20px)}
+.share-btn,.install-btn{width:44px;height:44px}
+/* Subject icons */
+.sub-ic{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:8px;font-size:13px;margin-inline-end:6px;vertical-align:middle;background:var(--surface2);flex:none}
+.prow .s{display:flex;align-items:center;gap:2px}
+/* Editable full table for admin */
+.edit-tw{overflow-x:auto;border-radius:22px;border:1px solid var(--line);background:var(--card-bg);backdrop-filter:blur(var(--card-blur));-webkit-backdrop-filter:blur(var(--card-blur))}
+.edit-tw table{border-collapse:collapse;width:100%;min-width:520px;font-size:.82rem}
+.edit-tw th,.edit-tw td{padding:6px 4px;text-align:center;border-bottom:1px solid var(--line)}
+.edit-tw thead th{background:var(--surface2);font-weight:600;font-size:.78rem;padding:10px 4px}
+.edit-tw tbody th{width:52px;background:var(--surface2);font-weight:600;font-size:.8rem}
+.edit-tw td{padding:4px}
+.edit-tw input{width:100%;min-height:40px;padding:0 6px;border-radius:12px;border:1.5px solid transparent;background:var(--surface);text-align:center;font-size:.82rem;transition:border-color .2s,box-shadow .2s}
+.edit-tw input:focus{border-color:var(--pri);outline:0;box-shadow:0 0 0 3px var(--pri-c)}
+/* Period detail sheet */
+.detail-hero{text-align:center;padding:8px 0 18px}
+.detail-hero .num{width:64px;height:64px;border-radius:22px;background:var(--pri);color:var(--on-pri);display:grid;place-items:center;font-size:1.5rem;font-weight:700;margin:0 auto 12px;box-shadow:0 8px 24px rgba(63,127,67,.25)}
+.detail-hero .sub{font-size:1.25rem;font-weight:600;margin-bottom:4px}
+.detail-hero .day{color:var(--muted);font-size:.92rem}
+.detail-rows{display:flex;flex-direction:column;gap:10px}
+.detail-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:18px;background:var(--surface2);animation:slideIn .4s cubic-bezier(.2,.85,.2,1) both}
+.detail-row:nth-child(2){animation-delay:.06s}
+.detail-row:nth-child(3){animation-delay:.12s}
+.detail-row .ic-wrap{width:42px;height:42px;border-radius:14px;background:var(--surface);display:grid;place-items:center;color:var(--pri)}
+.detail-row .meta{flex:1}.detail-row .meta b{display:block;font-size:.82rem;color:var(--muted);font-weight:500}.detail-row .meta span{font-weight:600}
+.prow{cursor:pointer;transition:transform .18s,background .25s}
+.prow:active{transform:scale(.98)}
+.card{animation:fadeSlide .35s cubic-bezier(.2,.85,.2,1) both}
+@keyframes slideUp{from{transform:translateY(100%);opacity:.55}to{transform:translateY(0);opacity:1}}
+@keyframes scaleIn{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes slideIn{from{transform:translateX(18px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes fadeSlide{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes fd{from{opacity:0}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
@@ -122,6 +168,8 @@ summary{min-height:46px;display:flex;align-items:center;font-weight:500;cursor:p
 <symbol id="i-back" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
 <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 3.9M15.4 6.6l-6.8 3.9"/></symbol>
+<symbol id="i-homeadd" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/><path d="M16 11h4M18 9v4"/></symbol>
 <symbol id="i-wifioff" viewBox="0 0 24 24"><path d="M2 2l20 20M8.5 16.4a5 5 0 0 1 7 0M2 8.8a15 15 0 0 1 4.2-2.6M10.7 5.1A15 15 0 0 1 22 8.8M5 12.9a10 10 0 0 1 5.2-2.7M19 12.9a10 10 0 0 0-2.4-1.9M12 20h.01"/></symbol>
 </defs></svg>
 
@@ -160,6 +208,20 @@ const blankDays = () => Object.fromEntries(DAYS.map(d => [d.k, Array(PERIODS).fi
 const blankTimes = () => Array.from({length:PERIODS}, () => ({start:"", end:""}));
 const clone = o => JSON.parse(JSON.stringify(o));
 const dayName = k => DAYS.find(d => d.k === k).n;
+/* أيقونات لطيفة تلقائية حسب اسم المادة (تصميم فقط) */
+const SUB_ICONS = ["📘","📗","📕","📙","✏️","📝","📐","🔬","🧮","📚","🖊️","🎨","🧪","📖","📌"];
+function subjectIcon(name) {
+  const s = String(name || "").trim();
+  if (!s) return "";
+  let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  const emoji = SUB_ICONS[h % SUB_ICONS.length];
+  return `<span class="sub-ic" aria-hidden="true">${emoji}</span>`;
+}
+function subjectLabel(name) {
+  const s = String(name || "").trim();
+  if (!s) return "—";
+  return `${subjectIcon(s)}${esc(s)}`;
+}
 
 /* ===== الحالة ===== */
 const configured = !String(firebaseConfig.apiKey).includes("ضع");
@@ -231,8 +293,9 @@ function confirmSheet(title, body, okLabel, danger = false) {
   });
 }
 
-/* ===== المظهر ===== */
+/* ===== المظهر + التأثير الزجاجي ===== */
 const mq = matchMedia("(prefers-color-scheme: dark)");
+const SHARE_URL = "https://jadwli-web-app.vercel.app/";
 function applyTheme() {
   let pref = "auto"; try { pref = localStorage.getItem("jadwali.theme") || "auto"; } catch {}
   const t = pref === "auto" ? (mq.matches ? "dark" : "light") : pref;
@@ -240,15 +303,23 @@ function applyTheme() {
   document.querySelector('meta[name=theme-color]').content = t === "dark" ? "#0f180f" : "#f2f7ee";
   return pref;
 }
+function applyGlass() {
+  let g = "off"; try { g = localStorage.getItem("jadwali.glass") || "off"; } catch {}
+  document.documentElement.dataset.glass = g === "on" ? "on" : "off";
+  return g === "on";
+}
 mq.addEventListener("change", applyTheme);
+applyGlass();
 
 /* ===== العرض ===== */
 const route = () => ({ "#week": "week", "#archive": "archive", "#admin": "admin" }[location.hash] || "home");
 
 function appbar(r) {
   const titles = { week: "الجدول الأسبوعي", archive: "الأرشيف", admin: "لوحة الإدارة" };
-  if (r === "home") return `<div class="logo">${ic("grid")}</div><h1>جدولي</h1><button class="iconbtn" data-act="settings" aria-label="الإعدادات">${ic("settings")}</button>`;
-  return `<button class="iconbtn" data-act="home" aria-label="رجوع">${ic("back")}</button><h1>${titles[r]}</h1><button class="iconbtn" data-act="settings" aria-label="الإعدادات">${ic("settings")}</button>`;
+  const shareBtn = `<button class="iconbtn soft share-btn" data-act="share" aria-label="مشاركة">${ic("share")}</button>`;
+  const installBtn = isStandalone() ? "" : `<button class="iconbtn soft install-btn" data-act="install-icon" aria-label="تثبيت على الشاشة الرئيسية">${ic("homeadd")}</button>`;
+  if (r === "home") return `<div class="logo">${ic("grid")}</div><h1>جدولي</h1>${shareBtn}${installBtn}<button class="iconbtn" data-act="settings" aria-label="الإعدادات">${ic("settings")}</button>`;
+  return `<button class="iconbtn" data-act="home" aria-label="رجوع">${ic("back")}</button><h1>${titles[r]}</h1>${shareBtn}${installBtn}<button class="iconbtn" data-act="settings" aria-label="الإعدادات">${ic("settings")}</button>`;
 }
 
 function statusLine() {
@@ -284,13 +355,14 @@ function periodRows(s, key, live) {
     const tm = a && b ? `${a} – ${b}` : "";
     const cls = i === curIdx ? "now" : i === nextIdx ? "next" : "";
     const tag = i === curIdx ? `<span class="tag">الحالية</span>` : i === nextIdx ? `<span class="tag" style="color:var(--pri)">القادمة</span>` : "";
-    return `<div class="prow ${cls} ${sub.trim() ? "" : "empty"}"><span class="n">${i + 1}</span><span class="s">${esc(sub.trim() || "—")}${tag}</span><span class="t">${tm}</span></div>`;
+    const has = !!sub.trim();
+    return `<div class="prow ${cls} ${has ? "" : "empty"}" data-act="period-detail" data-day="${key}" data-p="${i}" role="button" tabindex="0"><span class="n">${i + 1}</span><span class="s">${has ? subjectLabel(sub) : "—"}${tag}</span><span class="t">${tm}</span></div>`;
   }).join("");
 }
 
 function table(s, hl) {
   const head = DAYS.map(d => `<th class="${hl === d.k ? "today" : ""}">${d.n}</th>`).join("");
-  const rows = Array.from({ length: PERIODS }, (_, p) => `<tr><th>${p + 1}</th>${DAYS.map(d => { const v = s.days[d.k][p].trim(); return `<td class="${hl === d.k ? "today" : ""} ${v ? "" : "e"}">${esc(v || "—")}</td>`; }).join("")}</tr>`).join("");
+  const rows = Array.from({ length: PERIODS }, (_, p) => `<tr><th>${p + 1}</th>${DAYS.map(d => { const v = s.days[d.k][p].trim(); return `<td class="${hl === d.k ? "today" : ""} ${v ? "" : "e"}">${v ? subjectLabel(v) : "—"}</td>`; }).join("")}</tr>`).join("");
   return `<div class="tw"><table><thead><tr><th></th>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
@@ -332,17 +404,25 @@ function adminView() {
   if (!isAdmin) return `<div class="card notice"><p class="big">هذه الصفحة للمدير فقط</p><button class="btn fill" style="margin-top:10px" data-act="login">${ic("lock")}دخول المدير</button></div>`;
   return `<div class="status" style="margin-bottom:10px"><span id="dstat">—</span></div>
   <div class="btns"><button class="btn" data-act="new-draft">${ic("plus")}جدول جديد</button><button class="btn ghost" data-act="load-current">${ic("download")}تحميل المنشور</button></div>
-  <div class="chips" id="achips"></div>
-  <div id="arows"></div>
-  <div class="tools"><select id="copyTo" aria-label="نسخ إلى يوم">${DAYS.map(d => `<option value="${d.k}">${d.n}</option>`).join("")}</select><button class="btn" data-act="copy-day">${ic("copy")}نسخ اليوم إلى</button></div>
-  <button class="btn ghost" style="width:100%;margin-bottom:10px" data-act="clear-day">${ic("trash")}مسح كل حصص اليوم</button>
+  <div id="arows" class="card" style="padding:12px"></div>
+  <div class="tools" style="margin-top:12px"><select id="copyFrom" aria-label="نسخ من يوم">${DAYS.map(d => `<option value="${d.k}">${d.n}</option>`).join("")}</select><select id="copyTo" aria-label="نسخ إلى يوم">${DAYS.map(d => `<option value="${d.k}">${d.n}</option>`).join("")}</select><button class="btn" data-act="copy-day">${ic("copy")}نسخ</button></div>
+  <button class="btn ghost" style="width:100%;margin-bottom:10px" data-act="clear-day">${ic("trash")}مسح يوم محدد</button>
   <details><summary>أوقات الحصص (اختياري)</summary><p style="margin:0 0 10px;color:var(--muted);font-size:.88rem">إذا لم تُضف الأوقات لن يتم تمييز الحصة الحالية.</p>${draft.times.map((t, i) => `<div class="trow"><b>${i + 1}</b><input type="time" data-ts="${i}:start" value="${esc(t.start)}" aria-label="بداية الحصة ${i + 1}"><input type="time" data-ts="${i}:end" value="${esc(t.end)}" aria-label="نهاية الحصة ${i + 1}"></div>`).join("")}</details>
   <div class="stick"><button class="btn ghost" data-act="preview">${ic("eye")}معاينة</button><button class="btn fill" data-act="publish">${ic("send")}نشر الجدول</button></div>`;
 }
 function fillAdmin() {
-  const ch = $("#achips"), rows = $("#arows"); if (!ch || !rows) return;
-  ch.innerHTML = DAYS.map(d => `<button class="chip ${adminDay === d.k ? "on" : ""}" data-act="admin-day" data-k="${d.k}">${d.n}</button>`).join("");
-  rows.innerHTML = draft.days[adminDay].map((v, i) => `<div class="erow"><span class="n">${i + 1}</span><input data-p="${i}" value="${esc(v)}" maxlength="40" list="subjects" placeholder="اسم المادة" aria-label="الحصة ${i + 1}"><button class="iconbtn" data-act="clear-slot" data-p="${i}" aria-label="مسح الحصة ${i + 1}">${ic("x")}</button></div>`).join("");
+  const rows = $("#arows"); if (!rows) return;
+  // جدول كامل: الأعمدة = الحصص، الصفوف = الأيام (مثل المعاينة)
+  const head = Array.from({length: PERIODS}, (_, i) => `<th>الحصة ${i + 1}</th>`).join("");
+  const body = DAYS.map(d => {
+    const cells = Array.from({length: PERIODS}, (_, p) => {
+      const v = draft.days[d.k][p] || "";
+      return `<td><input data-day="${d.k}" data-p="${p}" value="${esc(v)}" maxlength="40" list="subjects" placeholder="مادة" aria-label="${d.n} الحصة ${p + 1}"></td>`;
+    }).join("");
+    return `<tr><th>${d.n}</th>${cells}</tr>`;
+  }).join("");
+  rows.innerHTML = `<div class="edit-tw"><table><thead><tr><th></th>${head}</tr></thead><tbody>${body}</tbody></table></div>
+  <p style="margin:10px 0 0;font-size:.82rem;color:var(--muted);text-align:center">اكتب اسم المادة مباشرة في الخلية · تُحفظ تلقائياً</p>`;
   refreshSubjects();
 }
 function refreshSubjects() {
@@ -394,14 +474,21 @@ async function publishDraft() {
 /* ===== الإعدادات وتسجيل الدخول ===== */
 function settingsSheet() {
   const pref = applyTheme();
+  const glassOn = applyGlass();
   const seg = [["auto", "تلقائي"], ["light", "فاتح"], ["dark", "داكن"]].map(([k, n]) => `<button class="${pref === k ? "on" : ""}" data-act="theme" data-k="${k}">${n}</button>`).join("");
+  const glassRow = `<div class="row-slide" data-act="toggle-glass">
+    <div><div class="lbl-s">التأثير الزجاجي</div><div class="sub">شفافية ناعمة مع ضوء خفيف من الزوايا</div></div>
+    <div class="toggle ${glassOn ? "on" : ""}" id="glass-tog"></div>
+  </div>`;
   const adm = isAdmin
     ? `<div class="btns" style="margin:18px 0 0"><button class="btn fill" data-act="go-admin">${ic("shield")}لوحة الإدارة</button><button class="btn ghost" data-act="logout">${ic("logout")}خروج</button></div>`
-    : `<button class="btn ghost" style="width:100%;margin-top:18px" data-act="login">${ic("lock")}دخول المدير</button>`;
-  const inst = isStandalone() ? "" : installEvt
-    ? `<button class="btn fill" style="width:100%;margin-top:18px" data-act="install">${ic("download")}تثبيت التطبيق</button>`
-    : `<p style="margin:18px 0 0;font-size:.88rem">لتثبيت التطبيق: من قائمة المتصفح اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية». على iPhone استخدم Safari ثم زر المشاركة.</p>`;
-  openSheet(`<h3>الإعدادات</h3><p>المظهر</p><div class="seg">${seg}</div>${inst}${adm}<p style="margin:18px 0 0;font-size:.82rem;text-align:center">جدولي – مدرسة الليث بن سعد، 5/2</p>`);
+    : `<button class="btn ghost" style="width:100%;margin-top:14px" data-act="login">${ic("lock")}دخول المدير</button>`;
+  openSheet(`<h3>الإعدادات</h3>
+    <p style="margin-bottom:8px">المظهر</p>
+    <div class="seg">${seg}</div>
+    ${glassRow}
+    ${adm}
+    <p style="margin:20px 0 0;font-size:.82rem;text-align:center;opacity:.75">جدولي – مدرسة الليث بن سعد، 5/2</p>`);
 }
 function loginSheet() {
   if (!configured) { toast("أكمل إعدادات Firebase أولاً."); return; }
@@ -417,6 +504,25 @@ function loginSheet() {
     } catch (e) { $("#lerr").textContent = errMsg(e); $("#lgo").removeAttribute("disabled"); }
   };
   $("#lgo").onclick = go; $("#pw").addEventListener("keydown", e => e.key === "Enter" && go());
+}
+
+function showInstallHelp(isIOS) {
+  const steps = isIOS
+    ? `<p style="margin:12px 0 8px;font-weight:500">على الآيفون:</p>
+       <ol style="margin:0;padding-inline-start:22px;color:var(--muted);font-size:.92rem;line-height:1.7">
+         <li>اضغط زر المشاركة في سفاري (المربع مع السهم)</li>
+         <li>انزل للأسفل واختر «إضافة إلى الشاشة الرئيسية»</li>
+         <li>ثم اضغط «إضافة»</li>
+       </ol>
+       <button class="btn fill" style="width:100%;margin-top:16px" data-act="share">${ic("share")}فتح المشاركة</button>`
+    : `<p style="margin:12px 0 8px">من قائمة المتصفح اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».</p>
+       <button class="btn fill" style="width:100%;margin-top:12px" data-act="share">${ic("share")}مشاركة الرابط</button>`;
+  openSheet(`<h3>تثبيت التطبيق</h3>
+    <p>ثبّت «جدولي» على شاشتك الرئيسية للوصول السريع والعمل دون اتصال.</p>
+    ${steps}
+    <button class="btn ghost" style="width:100%;margin-top:10px" id="cl-help">حسناً</button>`);
+  const cl = document.getElementById("cl-help");
+  if (cl) cl.onclick = closeSheet;
 }
 
 /* ===== الرسم الرئيسي ===== */
@@ -442,7 +548,58 @@ document.addEventListener("click", async e => {
     case "go-archive": location.hash = "#archive"; break;
     case "go-admin": closeSheet(); location.hash = "#admin"; break;
     case "settings": settingsSheet(); break;
-    case "install": if (installEvt) { installEvt.prompt(); await installEvt.userChoice.catch(() => {}); installEvt = null; closeSheet(); } break;
+    case "install":
+    case "install-icon": {
+      if (installEvt) {
+        installEvt.prompt();
+        await installEvt.userChoice.catch(() => {});
+        installEvt = null;
+        closeSheet();
+      } else {
+        // iOS / متصفحات بدون beforeinstallprompt → نفتح مشاركة أو إرشادات
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: "جدولي",
+              text: "الجدول الأسبوعي – مدرسة الليث بن سعد",
+              url: SHARE_URL
+            });
+          } catch (err) {
+            if (err.name !== "AbortError") showInstallHelp(isIOS);
+          }
+        } else {
+          showInstallHelp(isIOS);
+        }
+      }
+      break;
+    }
+    case "share": {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "جدولي",
+            text: "الجدول الأسبوعي – مدرسة الليث بن سعد",
+            url: SHARE_URL
+          });
+        } catch (err) {
+          if (err.name !== "AbortError") {
+            try { await navigator.clipboard.writeText(SHARE_URL); toast("تم نسخ الرابط"); } catch { toast(SHARE_URL); }
+          }
+        }
+      } else {
+        try { await navigator.clipboard.writeText(SHARE_URL); toast("تم نسخ الرابط"); } catch { toast(SHARE_URL); }
+      }
+      break;
+    }
+    case "toggle-glass": {
+      const next = applyGlass() ? "off" : "on";
+      try { localStorage.setItem("jadwali.glass", next); } catch {}
+      applyGlass();
+      const tog = document.getElementById("glass-tog");
+      if (tog) tog.classList.toggle("on", next === "on");
+      break;
+    }
     case "theme": try { localStorage.setItem("jadwali.theme", el.dataset.k); } catch {} settingsSheet(); break;
     case "login": closeSheet(); loginSheet(); break;
     case "logout": closeSheet(); await signOut(auth); toast("تم تسجيل الخروج"); location.hash = ""; break;
@@ -453,14 +610,55 @@ document.addEventListener("click", async e => {
       openSheet(`<h3>جدول منشور في ${fmtDate(toDate(s.publishedAt), false)}</h3><p>نسخة للعرض فقط.</p>${table(normalize(s), null)}<button class="btn ghost" id="cl" style="width:100%;margin-top:14px">إغلاق</button>`);
       $("#cl").onclick = closeSheet; break;
     }
-    case "admin-day": adminDay = el.dataset.k; fillAdmin(); break;
-    case "clear-slot": { const p = +el.dataset.p; draft.days[adminDay][p] = ""; el.parentElement.querySelector("input").value = ""; scheduleSave(); break; }
-    case "clear-day":
-      if (await confirmSheet("مسح حصص " + dayName(adminDay), "<p>سيتم مسح الحصص السبع لهذا اليوم من المسودة.</p>", "مسح", true)) { draft.days[adminDay] = Array(PERIODS).fill(""); fillAdmin(); scheduleSave(); }
+    case "clear-day": {
+      const from = $("#copyFrom")?.value || "sun";
+      if (await confirmSheet("مسح حصص " + dayName(from), "<p>سيتم مسح الحصص السبع لهذا اليوم من المسودة.</p>", "مسح", true)) {
+        draft.days[from] = Array(PERIODS).fill("");
+        fillAdmin();
+        scheduleSave();
+      }
       break;
+    }
     case "copy-day": {
-      const to = $("#copyTo").value; if (to === adminDay) { toast("اختر يوماً مختلفاً للنسخ إليه."); return; }
-      if (await confirmSheet("نسخ الجدول", `<p>سيتم استبدال حصص ${dayName(to)} بحصص ${dayName(adminDay)}.</p>`, "نسخ")) { draft.days[to] = [...draft.days[adminDay]]; scheduleSave(); toast(`نُسخ ${dayName(adminDay)} إلى ${dayName(to)}`); }
+      const from = $("#copyFrom")?.value, to = $("#copyTo")?.value;
+      if (!from || !to || from === to) { toast("اختر يومين مختلفين للنسخ."); return; }
+      if (await confirmSheet("نسخ الجدول", `<p>سيتم استبدال حصص ${dayName(to)} بحصص ${dayName(from)}.</p>`, "نسخ")) {
+        draft.days[to] = [...draft.days[from]];
+        fillAdmin();
+        scheduleSave();
+        toast(`نُسخ ${dayName(from)} إلى ${dayName(to)}`);
+      }
+      break;
+    }
+    case "period-detail": {
+      const day = el.dataset.day, p = +el.dataset.p;
+      if (!current || !day) return;
+      const sub = (current.days[day]?.[p] || "").trim();
+      const a = fmtTime(current.times[p]?.start), b = fmtTime(current.times[p]?.end);
+      const tm = a && b ? `${a} – ${b}` : (a || b || "غير محدد");
+      openSheet(`
+        <div class="detail-hero">
+          <div class="num">${p + 1}</div>
+          <div class="sub">${sub ? subjectLabel(sub) : "—"}</div>
+          <div class="day">${dayName(day)}</div>
+        </div>
+        <div class="detail-rows">
+          <div class="detail-row">
+            <div class="ic-wrap">${ic("calendar")}</div>
+            <div class="meta"><b>اليوم</b><span>${dayName(day)}</span></div>
+          </div>
+          <div class="detail-row">
+            <div class="ic-wrap">${ic("grid")}</div>
+            <div class="meta"><b>الحصة</b><span>الحصة ${p + 1}</span></div>
+          </div>
+          <div class="detail-row">
+            <div class="ic-wrap">${ic("sun")}</div>
+            <div class="meta"><b>التوقيت</b><span>${tm}</span></div>
+          </div>
+        </div>
+        <button class="btn ghost" style="width:100%;margin-top:18px" id="cl-detail">إغلاق</button>`);
+      const cl = document.getElementById("cl-detail");
+      if (cl) cl.onclick = closeSheet;
       break;
     }
     case "new-draft":
@@ -484,8 +682,15 @@ document.addEventListener("click", async e => {
 });
 document.addEventListener("input", e => {
   const t = e.target;
-  if (t.dataset.p !== undefined) { draft.days[adminDay][+t.dataset.p] = t.value; scheduleSave(); refreshSubjects(); }
-  else if (t.dataset.ts !== undefined) { const [i, k] = t.dataset.ts.split(":"); draft.times[+i][k] = t.value; scheduleSave(); }
+  if (t.dataset.day !== undefined && t.dataset.p !== undefined) {
+    draft.days[t.dataset.day][+t.dataset.p] = t.value;
+    scheduleSave();
+    refreshSubjects();
+  } else if (t.dataset.ts !== undefined) {
+    const [i, k] = t.dataset.ts.split(":");
+    draft.times[+i][k] = t.value;
+    scheduleSave();
+  }
 });
 addEventListener("hashchange", () => { closeSheet(); render(); if (route() === "admin" && isAdmin) loadDraft(); });
 addEventListener("online", () => { online = true; softRender(); });
