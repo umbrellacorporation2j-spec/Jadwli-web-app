@@ -6,9 +6,14 @@
 <title>جدولي | مدرسة الليث بن سعد</title>
 <meta name="description" content="الجدول الأسبوعي لطلاب الصف الثاني المتوسط، الفصل 5/2">
 <meta name="theme-color" content="#f2f7ee">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="/icons/icon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="/icons/icon-192.png" sizes="192x192">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="جدولي">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -138,13 +143,40 @@ summary{min-height:46px;display:flex;align-items:center;font-weight:500;cursor:p
 .detail-row:nth-child(3){animation-delay:.12s}
 .detail-row .ic-wrap{width:42px;height:42px;border-radius:14px;background:var(--surface);display:grid;place-items:center;color:var(--pri)}
 .detail-row .meta{flex:1}.detail-row .meta b{display:block;font-size:.82rem;color:var(--muted);font-weight:500}.detail-row .meta span{font-weight:600}
-.prow{cursor:pointer;transition:transform .18s,background .25s}
+.prow{cursor:pointer;transition:transform .18s,background .25s;animation:fadeSlide .4s cubic-bezier(.2,.85,.2,1) both}
 .prow:active{transform:scale(.98)}
-.card{animation:fadeSlide .35s cubic-bezier(.2,.85,.2,1) both}
+.plist .prow:nth-child(1){animation-delay:.02s}
+.plist .prow:nth-child(2){animation-delay:.05s}
+.plist .prow:nth-child(3){animation-delay:.08s}
+.plist .prow:nth-child(4){animation-delay:.11s}
+.plist .prow:nth-child(5){animation-delay:.14s}
+.plist .prow:nth-child(6){animation-delay:.17s}
+.plist .prow:nth-child(7){animation-delay:.2s}
+.card{animation:fadeSlide .38s cubic-bezier(.2,.85,.2,1) both}
+.chips{animation:fadeSlide .32s cubic-bezier(.2,.85,.2,1) both}
+.chip{transition:transform .2s,background .25s,color .25s}
+.chip:active{transform:scale(.94)}
+.btns{animation:fadeSlide .4s cubic-bezier(.2,.85,.2,1) both}
+.btn{transition:transform .18s,filter .2s,background .25s}
+.arch{animation:fadeSlide .4s cubic-bezier(.2,.85,.2,1) both}
+.arch:nth-child(2){animation-delay:.05s}
+.arch:nth-child(3){animation-delay:.1s}
+.arch:nth-child(4){animation-delay:.15s}
+.hero{animation:fadeSlide .36s cubic-bezier(.2,.85,.2,1) both}
+.row-slide{animation:slideIn .4s cubic-bezier(.2,.85,.2,1) both}
+.seg{animation:fadeSlide .35s cubic-bezier(.2,.85,.2,1) both}
+.edit-tw{animation:fadeSlide .4s cubic-bezier(.2,.85,.2,1) both}
+.stick{animation:fadeSlide .45s cubic-bezier(.2,.85,.2,1) both}
+.tools{animation:fadeSlide .38s cubic-bezier(.2,.85,.2,1) both}
+.detail-hero{animation:fadeSlide .35s cubic-bezier(.2,.85,.2,1) both}
+#view.slide-in > *{animation:fadeSlide .4s cubic-bezier(.2,.85,.2,1) both}
+#view.slide-in > *:nth-child(2){animation-delay:.04s}
+#view.slide-in > *:nth-child(3){animation-delay:.08s}
+#view.slide-in > *:nth-child(4){animation-delay:.12s}
 @keyframes slideUp{from{transform:translateY(100%);opacity:.55}to{transform:translateY(0);opacity:1}}
 @keyframes scaleIn{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
-@keyframes slideIn{from{transform:translateX(18px);opacity:0}to{transform:translateX(0);opacity:1}}
-@keyframes fadeSlide{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes slideIn{from{transform:translateX(22px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes fadeSlide{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes fd{from{opacity:0}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
@@ -317,7 +349,8 @@ const route = () => ({ "#week": "week", "#archive": "archive", "#admin": "admin"
 function appbar(r) {
   const titles = { week: "الجدول الأسبوعي", archive: "الأرشيف", admin: "لوحة الإدارة" };
   const shareBtn = `<button class="iconbtn soft share-btn" data-act="share" aria-label="مشاركة">${ic("share")}</button>`;
-  const installBtn = isStandalone() ? "" : `<button class="iconbtn soft install-btn" data-act="install-icon" aria-label="تثبيت على الشاشة الرئيسية">${ic("homeadd")}</button>`;
+  // أيقونة تنزيل ظاهرة دائماً ما دام التطبيق غير مثبت
+  const installBtn = isStandalone() ? "" : `<button class="iconbtn soft install-btn" data-act="install-icon" aria-label="تثبيت التطبيق">${ic("download")}</button>`;
   if (r === "home") return `<div class="logo">${ic("grid")}</div><h1>جدولي</h1>${shareBtn}${installBtn}<button class="iconbtn" data-act="settings" aria-label="الإعدادات">${ic("settings")}</button>`;
   return `<button class="iconbtn" data-act="home" aria-label="رجوع">${ic("back")}</button><h1>${titles[r]}</h1>${shareBtn}${installBtn}<button class="iconbtn" data-act="settings" aria-label="الإعدادات">${ic("settings")}</button>`;
 }
@@ -531,7 +564,12 @@ function render() {
   if (r === "admin" && authReady && !isAdmin) { r = "admin"; }
   $("#appbar").innerHTML = appbar(r);
   const v = { home: homeView, week: weekView, archive: archiveView, admin: adminView }[r]();
-  $("#view").innerHTML = v;
+  const view = $("#view");
+  view.classList.remove("slide-in");
+  view.innerHTML = v;
+  // إجبار إعادة تشغيل الانزلاق
+  void view.offsetWidth;
+  view.classList.add("slide-in");
   if (r === "admin" && isAdmin) fillAdmin();
   window.scrollTo(0, 0);
 }
@@ -550,15 +588,37 @@ document.addEventListener("click", async e => {
     case "settings": settingsSheet(); break;
     case "install":
     case "install-icon": {
+      // أندرويد: إذا وصل beforeinstallprompt → نفتح زر التثبيت فوراً
       if (installEvt) {
-        installEvt.prompt();
-        await installEvt.userChoice.catch(() => {});
+        try {
+          installEvt.prompt();
+          const choice = await installEvt.userChoice.catch(() => null);
+          if (choice && choice.outcome === "accepted") toast("جاري التثبيت…");
+        } catch (err) {}
         installEvt = null;
         closeSheet();
+        // إعادة رسم الشريط لإخفاء الأيقونة بعد التثبيت
+        setTimeout(() => { if (isStandalone()) render(); }, 800);
       } else {
-        // iOS / متصفحات بدون beforeinstallprompt → نفتح مشاركة أو إرشادات
+        // لم يصل الحدث بعد أو iOS → نحاول مرة أخرى أو نعرض المساعدة
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-        if (navigator.share) {
+        if (!isIOS) {
+          // أندرويد بدون prompt جاهز: ننتظر لحظة ثم نعيد المحاولة أو نرشد
+          toast("انتظر لحظة…");
+          // أعد الاستماع لاحتمال وصول الحدث
+          const once = e => {
+            e.preventDefault();
+            installEvt = e;
+            removeEventListener("beforeinstallprompt", once);
+            installEvt.prompt();
+          };
+          addEventListener("beforeinstallprompt", once, { once: true });
+          // إن لم يأتِ خلال ثانيتين نعرض المساعدة
+          setTimeout(() => {
+            removeEventListener("beforeinstallprompt", once);
+            if (!installEvt) showInstallHelp(false);
+          }, 1800);
+        } else if (navigator.share) {
           try {
             await navigator.share({
               title: "جدولي",
@@ -566,10 +626,10 @@ document.addEventListener("click", async e => {
               url: SHARE_URL
             });
           } catch (err) {
-            if (err.name !== "AbortError") showInstallHelp(isIOS);
+            if (err.name !== "AbortError") showInstallHelp(true);
           }
         } else {
-          showInstallHelp(isIOS);
+          showInstallHelp(true);
         }
       }
       break;
@@ -734,7 +794,7 @@ setTimeout(hideSplash, 4000);
 /* ===== PWA ===== */
 if ("serviceWorker" in navigator) {
   const had = !!navigator.serviceWorker.controller; let reloaded = false;
-  navigator.serviceWorker.register("service-worker.js").catch(() => {});
+  navigator.serviceWorker.register("/service-worker.js").catch(() => {});
   navigator.serviceWorker.addEventListener("controllerchange", () => { if (had && !reloaded) { reloaded = true; location.reload(); } });
 }
 </script>
