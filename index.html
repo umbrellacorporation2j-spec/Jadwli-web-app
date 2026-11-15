@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جدولي | مدرسة الليث بن سعد</title>
+<meta name="description" content="الجدول الأسبوعي لطلاب الصف الثاني المتوسط، الفصل 5/2">
+<meta name="theme-color" content="#f2f7ee">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f7ee;--surface:#fafdf6;--surface2:#e6f0df;--line:#d2e1ca;--ink:#17261a;--muted:#587059;--pri:#3f7f43;--on-pri:#fff;--pri-c:#cfe8c8;--on-pri-c:#0c3412;--danger:#b5372f;--glass:rgba(242,247,238,.78);color-scheme:light}
+[data-theme=dark]{--bg:#0f180f;--surface:#162216;--surface2:#1e2e1f;--line:#2b402c;--ink:#e4efe0;--muted:#98ad98;--pri:#98d493;--on-pri:#0b2c0e;--pri-c:#244a27;--on-pri-c:#d2f0cc;--danger:#f0877f;--glass:rgba(15,24,15,.78);color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "Readex Pro",Tahoma,"Segoe UI",system-ui,sans-serif;min-height:100vh;transition:background .25s,color .25s}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
+.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.app{max-width:720px;margin:0 auto;padding:0 16px calc(env(safe-area-inset-bottom,0px) + 32px)}
+.appbar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 10px) 0 10px;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.appbar h1{flex:1;margin:0;font-size:1.15rem;font-weight:600}
+.iconbtn{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);color:var(--ink);transition:transform .15s,background .2s}
+.iconbtn:active{transform:scale(.92)}
+.logo{width:44px;height:44px;border-radius:15px;background:var(--pri);color:var(--on-pri);display:grid;place-items:center}
+.hero{padding:8px 4px 18px}
+.hero .school{font-weight:600;font-size:1.05rem}
+.hero .cls{color:var(--muted);font-size:.95rem}
+.hero .date{margin-top:14px;font-size:1.7rem;font-weight:700;line-height:1.3;letter-spacing:-.2px}
+.hero .hijri{color:var(--muted);font-size:.9rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:18px;margin-bottom:14px}
+.status{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:.88rem}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:3px 11px;border-radius:99px;background:var(--pri-c);color:var(--on-pri-c);font-size:.8rem;font-weight:500}
+.badge.warn{background:#f6e3c2;color:#5c3b00}[data-theme=dark] .badge.warn{background:#4a3712;color:#ffe3a8}
+.h2{font-size:1.1rem;font-weight:600;margin:0 0 12px}
+.plist{display:flex;flex-direction:column;gap:8px}
+.prow{display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:var(--surface2);transition:background .25s}
+.prow .n{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;background:var(--surface);font-weight:600}
+.prow .t{font-size:.82rem;color:var(--muted);white-space:nowrap}
+.prow .s{font-weight:500;overflow-wrap:anywhere}
+.prow.empty .s{color:var(--muted)}
+.prow.now{background:var(--pri);color:var(--on-pri);padding:18px 14px}
+.prow.now .n{background:rgba(255,255,255,.22);color:inherit}
+.prow.now .t{color:inherit;opacity:.85}
+.prow.now .s{font-size:1.2rem;font-weight:600}
+.prow.next{outline:2px solid var(--pri);outline-offset:-2px}
+.tag{font-size:.74rem;font-weight:600;margin-inline-start:8px;opacity:.9}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 20px;border-radius:99px;font-weight:600;background:var(--pri-c);color:var(--on-pri-c);transition:transform .15s,filter .2s}
+.btn:active{transform:scale(.97)}
+.btn.fill{background:var(--pri);color:var(--on-pri)}
+.btn.ghost{background:var(--surface2);color:var(--ink)}
+.btn.danger{background:var(--danger);color:#fff}
+.btn[disabled]{opacity:.55;pointer-events:none}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none}
+.chip{flex:none;min-height:44px;padding:0 18px;border-radius:99px;background:var(--surface2);font-weight:500}
+.chip.on{background:var(--pri);color:var(--on-pri)}
+.tw{overflow-x:auto;border-radius:20px;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:430px;font-size:.88rem}
+th,td{padding:10px 6px;text-align:center;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+tr:last-child th,tr:last-child td{border-bottom:0}
+thead th{background:var(--surface2);font-weight:600}
+tbody th{width:44px;background:var(--surface2);font-weight:600}
+th.today,td.today{background:var(--pri-c);color:var(--on-pri-c)}
+td.e{color:var(--muted)}
+.notice{text-align:center;padding:28px 16px}
+.notice p{margin:6px 0;color:var(--muted)}
+.notice .big{color:var(--ink);font-weight:600;font-size:1.1rem}
+.skel{height:52px;border-radius:18px;background:linear-gradient(90deg,var(--surface2),var(--surface),var(--surface2));background-size:200% 100%;animation:sh 1.3s linear infinite;margin-bottom:8px}
+@keyframes sh{to{background-position:-200% 0}}
+.arch{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:22px;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.arch .i{flex:1}.arch .i b{display:block}.arch .i span{font-size:.85rem;color:var(--muted)}
+.erow{display:grid;grid-template-columns:36px 1fr 44px;gap:8px;align-items:center;margin-bottom:8px}
+.erow .n{width:36px;height:36px;border-radius:12px;background:var(--surface2);display:grid;place-items:center;font-weight:600;font-size:.9rem}
+input,select{width:100%;min-height:48px;padding:0 16px;border-radius:16px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+input:focus,select:focus{border-color:var(--pri);outline:0}
+.lbl{display:block;font-size:.88rem;font-weight:500;margin:12px 0 6px}
+.tools{display:grid;grid-template-columns:1fr auto;gap:8px;margin:14px 0;align-items:center}
+.tools .btn{min-height:48px;padding:0 16px}
+details{margin:6px 0 14px;border:1px solid var(--line);border-radius:20px;padding:4px 14px;background:var(--surface)}
+summary{min-height:46px;display:flex;align-items:center;font-weight:500;cursor:pointer}
+.trow{display:grid;grid-template-columns:30px 1fr 1fr;gap:8px;align-items:center;margin-bottom:8px}
+.trow input{padding:0 8px;text-align:center}
+.stick{position:sticky;bottom:0;display:grid;grid-template-columns:1fr 1.4fr;gap:10px;padding:12px 0 calc(env(safe-area-inset-bottom,0px) + 8px);background:linear-gradient(transparent,var(--bg) 30%)}
+.scrim{position:fixed;inset:0;z-index:20;background:rgba(10,20,10,.5);display:flex;align-items:flex-end;justify-content:center;animation:fd .18s}
+.sheet{width:100%;max-width:560px;max-height:88vh;overflow:auto;background:var(--surface);border-radius:32px 32px 0 0;padding:22px 18px calc(env(safe-area-inset-bottom,0px) + 22px);animation:up .24s cubic-bezier(.2,.8,.2,1)}
+@media(min-width:700px){.scrim{align-items:center}.sheet{border-radius:32px}}
+.sheet h3{margin:0 0 6px;font-size:1.2rem}.sheet p{margin:6px 0 14px;color:var(--muted)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--surface2);padding:5px;border-radius:99px}
+.seg button{min-height:42px;border-radius:99px;font-weight:500}.seg button.on{background:var(--pri);color:var(--on-pri)}
+.err{color:var(--danger);font-size:.9rem;min-height:1.4em;margin:8px 0}
+.toast{position:fixed;inset-inline:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);z-index:30;max-width:460px;margin:auto;padding:14px 18px;border-radius:20px;background:var(--ink);color:var(--bg);font-weight:500;animation:up .25s;text-align:center}
+.splash{position:fixed;inset:0;z-index:40;display:grid;place-content:center;justify-items:center;gap:14px;background:var(--bg);transition:opacity .35s}
+.splash .logo{width:84px;height:84px;border-radius:28px}.splash .logo .ic{width:44px;height:44px}
+.splash.out{opacity:0;pointer-events:none}
+@keyframes up{from{transform:translateY(30px);opacity:0}}
+@keyframes fd{from{opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+<symbol id="i-archive" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="5" rx="1.5"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8M10 12h4"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h2M10 12h10M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4zM22 2 11 13"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="3"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+<symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+<symbol id="i-back" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
+<symbol id="i-wifioff" viewBox="0 0 24 24"><path d="M2 2l20 20M8.5 16.4a5 5 0 0 1 7 0M2 8.8a15 15 0 0 1 4.2-2.6M10.7 5.1A15 15 0 0 1 22 8.8M5 12.9a10 10 0 0 1 5.2-2.7M19 12.9a10 10 0 0 0-2.4-1.9M12 20h.01"/></symbol>
+</defs></svg>
+
+<div class="splash" id="splash"><div class="logo"><svg class="ic"><use href="#i-grid"/></svg></div><b>جدولي</b></div>
+
+<div class="app">
+  <header class="appbar" id="appbar"></header>
+  <main id="view"></main>
+</div>
+<div id="layer"></div>
+<datalist id="subjects"></datalist>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-app.js";
+import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager, doc, collection, onSnapshot, getDoc, getDocFromServer, setDoc, writeBatch, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-auth.js";
+
+/* ===== إعدادات Firebase (مفاتيح الويب عامة بطبيعتها؛ الحماية في قواعد Firestore) ===== */
+const firebaseConfig = {
+  apiKey: "AIzaSyBVDKdisDzCx_Axhg8LZO1zgNRWpRY64lI",
+  authDomain: "jadwali-93760.firebaseapp.com",
+  projectId: "jadwali-93760",
+  storageBucket: "jadwali-93760.firebasestorage.app",
+  messagingSenderId: "589993205801",
+  appId: "1:589993205801:web:ebf7c64ba8fd3b62a8bc38"
+};
+/* معرّف المدير لا يمنح أي صلاحية بحد ذاته؛ الحماية الفعلية في قواعد Firestore. يُستخدم هنا لإظهار لوحة الإدارة فقط. */
+const ADMIN_UID = "YdkQgSqZ0rPd1QV081Zg3E7TRIA3";
+
+const DAYS = [{k:"sun",n:"الأحد",js:0},{k:"mon",n:"الاثنين",js:1},{k:"tue",n:"الثلاثاء",js:2},{k:"wed",n:"الأربعاء",js:3},{k:"thu",n:"الخميس",js:4}];
+const PERIODS = 7;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ic = n => `<svg class="ic" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+const blankDays = () => Object.fromEntries(DAYS.map(d => [d.k, Array(PERIODS).fill("")]));
+const blankTimes = () => Array.from({length:PERIODS}, () => ({start:"", end:""}));
+const clone = o => JSON.parse(JSON.stringify(o));
+const dayName = k => DAYS.find(d => d.k === k).n;
+
+/* ===== الحالة ===== */
+const configured = !String(firebaseConfig.apiKey).includes("ضع");
+let db = null, auth = null;
+let current = null;            // الجدول المنشور
+let loadState = "loading";     // loading | ready | empty | error
+let loadError = "";
+let archives = [], archState = "loading", archError = "";
+let isAdmin = false, authReady = false;
+let weekSel = "all";
+let online = navigator.onLine;
+let draft = { days: blankDays(), times: blankTimes(), savedAtMs: 0 };
+let adminDay = "sun";
+let publishing = false;
+let installEvt = null;
+const isStandalone = () => matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; });
+addEventListener("appinstalled", () => { installEvt = null; closeSheet(); toast("تم تثبيت التطبيق"); });
+
+/* ===== أدوات ===== */
+function normalize(d) {
+  const days = blankDays();
+  DAYS.forEach(({k}) => { for (let i = 0; i < PERIODS; i++) days[k][i] = String(d?.days?.[k]?.[i] ?? ""); });
+  const times = blankTimes();
+  for (let i = 0; i < PERIODS; i++) times[i] = { start: String(d?.times?.[i]?.start ?? ""), end: String(d?.times?.[i]?.end ?? "") };
+  return { days, times };
+}
+const toDate = ts => ts && typeof ts.toDate === "function" ? ts.toDate() : null;
+const fmtDate = (d, withDay = true) => d ? d.toLocaleDateString("ar-EG", { ...(withDay ? {weekday:"long"} : {}), year:"numeric", month:"long", day:"numeric" }) : "—";
+const fmtHijri = d => d.toLocaleDateString("ar-SA", { day:"numeric", month:"long", year:"numeric" });
+const toMin = t => { const m = /^(\d{1,2}):(\d{2})$/.exec(t || ""); return m ? +m[1] * 60 + +m[2] : null; };
+const fmtTime = t => { const m = toMin(t); if (m === null) return ""; const h = Math.floor(m / 60), mm = m % 60; return `${(h % 12) || 12}:${String(mm).padStart(2,"0")}`; };
+const hasTimes = s => s?.times?.some(t => toMin(t.start) !== null && toMin(t.end) !== null);
+const filledCount = days => DAYS.reduce((n, {k}) => n + days[k].filter(x => x.trim()).length, 0);
+
+function errMsg(e) {
+  const c = e?.code || "";
+  if (c.includes("permission-denied")) return "لا تملك صلاحية لهذه العملية. تحقق من قواعد Firestore.";
+  if (c.includes("unavailable") || c.includes("network") || !navigator.onLine) return "تعذر الاتصال بالخادم. تحقق من الإنترنت ثم أعد المحاولة.";
+  if (c.includes("invalid-credential") || c.includes("wrong-password") || c.includes("user-not-found") || c.includes("invalid-email")) return "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+  if (c.includes("too-many-requests")) return "محاولات كثيرة. انتظر قليلاً ثم أعد المحاولة.";
+  if (c.includes("unauthenticated")) return "انتهت الجلسة. سجّل الدخول من جديد.";
+  return "حدث خطأ غير متوقع (" + (c || e?.message || "unknown") + ").";
+}
+
+let toastTimer;
+function toast(msg) {
+  document.querySelector(".toast")?.remove();
+  const t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); t.textContent = msg;
+  document.body.appendChild(t); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.remove(), 3800);
+}
+
+/* ===== النوافذ السفلية ===== */
+function openSheet(html) {
+  closeSheet();
+  const l = $("#layer");
+  l.innerHTML = `<div class="scrim" id="scrim"><div class="sheet" role="dialog" aria-modal="true">${html}</div></div>`;
+  $("#scrim").addEventListener("click", e => { if (e.target.id === "scrim") closeSheet(); });
+  l.querySelector("input,button,select")?.focus?.({ preventScroll: true });
+}
+function closeSheet() { $("#layer").innerHTML = ""; }
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeSheet(); });
+function confirmSheet(title, body, okLabel, danger = false) {
+  return new Promise(res => {
+    openSheet(`<h3>${esc(title)}</h3>${body}<div class="btns" style="margin:14px 0 0"><button class="btn ghost" id="cNo">إلغاء</button><button class="btn ${danger ? "danger" : "fill"}" id="cYes">${esc(okLabel)}</button></div>`);
+    $("#cNo").onclick = () => { closeSheet(); res(false); };
+    $("#cYes").onclick = () => { closeSheet(); res(true); };
+    $("#scrim").addEventListener("click", e => { if (e.target.id === "scrim") res(false); });
+  });
+}
+
+/* ===== المظهر ===== */
+const mq = matchMedia("(prefers-color-scheme: dark)");
+function applyTheme() {
+  let pref = "auto"; try { pref = localStorage.getItem("jadwali.theme") || "auto"; } catch {}
+  const t = pref === "auto" ? (mq.matches ? "dark" : "light") : pref;
+  document.documentElement.dataset.theme = t;
+  document.querySelector('meta[name=theme-color]').content = t === "dark" ? "#0f180f" : "#f2f7ee";
+  return pref;
+}
+mq.addEventListener("change", applyTheme);
+
+/* ===== العرض ===== */
+const route = () => ({ "#week": "week", "#archive": "archive", "#admin": "admin" }[location.hash] || "home");
+
+function appbar(r) {
+  const titles = { week: "الجدول الأسبوعي", archive: "الأرشيف", admin: "لوحة الإدارة" };
+  if (r === "home") return `<div class="logo">${ic("grid")}</div><h1>جدولي</h1><button class="iconbtn" data-act="settings" aria-label="الإعدادات">${ic("settings")}</button>`;
+  return `<button class="iconbtn" data-act="home" aria-label="رجوع">${ic("back")}</button><h1>${titles[r]}</h1><button class="iconbtn" data-act="settings" aria-label="الإعدادات">${ic("settings")}</button>`;
+}
+
+function statusLine() {
+  const upd = toDate(current?.publishedAt);
+  let s = "";
+  if (current) s += `<span class="badge">${ic("check").replace('class="ic"', 'class="ic" style="width:14px;height:14px"')}الجدول منشور</span><span>آخر تحديث: ${fmtDate(upd, false)}</span>`;
+  if (!online) s += `<span class="badge warn">${ic("wifioff").replace('class="ic"', 'class="ic" style="width:14px;height:14px"')}بدون اتصال</span>`;
+  return s ? `<div class="status">${s}</div>` : "";
+}
+
+function notice(kind) {
+  if (!configured) return `<div class="card notice"><p class="big">الإعداد غير مكتمل</p><p>ضع إعدادات Firebase (apiKey وappId) في أعلى ملف index.html كما في ملف README.</p></div>`;
+  if (kind === "error") return `<div class="card notice"><p class="big">تعذر تحميل الجدول</p><p>${esc(loadError)}</p><button class="btn fill" style="margin-top:10px" data-act="retry">إعادة المحاولة</button></div>`;
+  if (kind === "empty") return `<div class="card notice"><p class="big">لم يُنشر جدول بعد</p><p>سيظهر الجدول هنا فور نشره من المدير.</p></div>`;
+  return `<div class="card"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>`;
+}
+
+function todayInfo() {
+  const now = new Date(), d = DAYS.find(x => x.js === now.getDay());
+  return { now, key: d?.k || null };
+}
+
+function periodRows(s, key, live) {
+  const mins = live ? new Date().getHours() * 60 + new Date().getMinutes() : null;
+  let curIdx = -1, nextIdx = -1;
+  if (live && hasTimes(s)) {
+    for (let i = 0; i < PERIODS; i++) { const a = toMin(s.times[i].start), b = toMin(s.times[i].end); if (a !== null && b !== null && mins >= a && mins < b) { curIdx = i; break; } }
+    if (curIdx === -1) for (let i = 0; i < PERIODS; i++) { const a = toMin(s.times[i].start); if (a !== null && a > mins) { nextIdx = i; break; } }
+    else for (let i = curIdx + 1; i < PERIODS; i++) { if (toMin(s.times[i].start) !== null) { nextIdx = i; break; } }
+  }
+  return s.days[key].map((sub, i) => {
+    const a = fmtTime(s.times[i].start), b = fmtTime(s.times[i].end);
+    const tm = a && b ? `${a} – ${b}` : "";
+    const cls = i === curIdx ? "now" : i === nextIdx ? "next" : "";
+    const tag = i === curIdx ? `<span class="tag">الحالية</span>` : i === nextIdx ? `<span class="tag" style="color:var(--pri)">القادمة</span>` : "";
+    return `<div class="prow ${cls} ${sub.trim() ? "" : "empty"}"><span class="n">${i + 1}</span><span class="s">${esc(sub.trim() || "—")}${tag}</span><span class="t">${tm}</span></div>`;
+  }).join("");
+}
+
+function table(s, hl) {
+  const head = DAYS.map(d => `<th class="${hl === d.k ? "today" : ""}">${d.n}</th>`).join("");
+  const rows = Array.from({ length: PERIODS }, (_, p) => `<tr><th>${p + 1}</th>${DAYS.map(d => { const v = s.days[d.k][p].trim(); return `<td class="${hl === d.k ? "today" : ""} ${v ? "" : "e"}">${esc(v || "—")}</td>`; }).join("")}</tr>`).join("");
+  return `<div class="tw"><table><thead><tr><th></th>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+function homeView() {
+  const { now, key } = todayInfo();
+  const hero = `<section class="hero"><div class="school">مدرسة الليث بن سعد</div><div class="cls">الصف ثاني متوسط – الفصل 5/2</div><div class="date">${fmtDate(now)}</div><div class="hijri">${fmtHijri(now)}</div></section>`;
+  let body;
+  if (!configured) body = notice("config");
+  else if (loadState === "loading") body = notice("loading");
+  else if (loadState === "error") body = notice("error");
+  else if (loadState === "empty") body = notice("empty");
+  else {
+    const shown = key || "sun";
+    const label = key ? `جدول اليوم – ${dayName(key)}` : `اليوم عطلة نهاية الأسبوع، الدوام القادم: ${dayName("sun")}`;
+    body = `<div class="card"><h2 class="h2">${label}</h2><div class="plist">${periodRows(current, shown, !!key)}</div></div><div class="card" style="padding:14px 18px">${statusLine()}</div>`;
+  }
+  return `${hero}${body}<div class="btns"><button class="btn fill" data-act="go-week">${ic("calendar")}الجدول الأسبوعي</button><button class="btn" data-act="go-archive">${ic("archive")}الأرشيف</button></div>`;
+}
+
+function weekView() {
+  if (loadState === "loading" || !configured) return notice(configured ? "loading" : "config");
+  if (!current) return notice(loadState === "error" ? "error" : "empty");
+  const { key } = todayInfo();
+  const chips = [["all", "الأسبوع كاملاً"], ...DAYS.map(d => [d.k, d.n])].map(([k, n]) => `<button class="chip ${weekSel === k ? "on" : ""}" data-act="week-sel" data-k="${k}">${n}</button>`).join("");
+  const body = weekSel === "all" ? table(current, key) : `<div class="card"><div class="plist">${periodRows(current, weekSel, weekSel === key)}</div></div>`;
+  return `<div class="chips">${chips}</div>${body}<div class="card" style="margin-top:14px;padding:14px 18px">${statusLine()}</div>`;
+}
+
+function archiveView() {
+  if (!configured) return notice("config");
+  if (archState === "loading") return notice("loading");
+  if (archState === "error") return `<div class="card notice"><p class="big">تعذر تحميل الأرشيف</p><p>${esc(archError)}</p></div>`;
+  if (!archives.length) return `<div class="card notice"><p class="big">الأرشيف فارغ</p><p>تُحفظ الجداول السابقة هنا عند نشر جدول جديد.</p></div>`;
+  return archives.map(a => `<div class="arch"><div class="i"><b>نُشر في ${fmtDate(toDate(a.publishedAt), false)}</b><span>أُرشف في ${fmtDate(toDate(a.archivedAt), false)}</span></div><button class="btn" style="min-height:46px;padding:0 16px" data-act="view-arch" data-id="${esc(a.id)}">${ic("eye")}عرض</button></div>`).join("");
+}
+
+/* ===== لوحة الإدارة ===== */
+function adminView() {
+  if (!isAdmin) return `<div class="card notice"><p class="big">هذه الصفحة للمدير فقط</p><button class="btn fill" style="margin-top:10px" data-act="login">${ic("lock")}دخول المدير</button></div>`;
+  return `<div class="status" style="margin-bottom:10px"><span id="dstat">—</span></div>
+  <div class="btns"><button class="btn" data-act="new-draft">${ic("plus")}جدول جديد</button><button class="btn ghost" data-act="load-current">${ic("download")}تحميل المنشور</button></div>
+  <div class="chips" id="achips"></div>
+  <div id="arows"></div>
+  <div class="tools"><select id="copyTo" aria-label="نسخ إلى يوم">${DAYS.map(d => `<option value="${d.k}">${d.n}</option>`).join("")}</select><button class="btn" data-act="copy-day">${ic("copy")}نسخ اليوم إلى</button></div>
+  <button class="btn ghost" style="width:100%;margin-bottom:10px" data-act="clear-day">${ic("trash")}مسح كل حصص اليوم</button>
+  <details><summary>أوقات الحصص (اختياري)</summary><p style="margin:0 0 10px;color:var(--muted);font-size:.88rem">إذا لم تُضف الأوقات لن يتم تمييز الحصة الحالية.</p>${draft.times.map((t, i) => `<div class="trow"><b>${i + 1}</b><input type="time" data-ts="${i}:start" value="${esc(t.start)}" aria-label="بداية الحصة ${i + 1}"><input type="time" data-ts="${i}:end" value="${esc(t.end)}" aria-label="نهاية الحصة ${i + 1}"></div>`).join("")}</details>
+  <div class="stick"><button class="btn ghost" data-act="preview">${ic("eye")}معاينة</button><button class="btn fill" data-act="publish">${ic("send")}نشر الجدول</button></div>`;
+}
+function fillAdmin() {
+  const ch = $("#achips"), rows = $("#arows"); if (!ch || !rows) return;
+  ch.innerHTML = DAYS.map(d => `<button class="chip ${adminDay === d.k ? "on" : ""}" data-act="admin-day" data-k="${d.k}">${d.n}</button>`).join("");
+  rows.innerHTML = draft.days[adminDay].map((v, i) => `<div class="erow"><span class="n">${i + 1}</span><input data-p="${i}" value="${esc(v)}" maxlength="40" list="subjects" placeholder="اسم المادة" aria-label="الحصة ${i + 1}"><button class="iconbtn" data-act="clear-slot" data-p="${i}" aria-label="مسح الحصة ${i + 1}">${ic("x")}</button></div>`).join("");
+  refreshSubjects();
+}
+function refreshSubjects() {
+  const set = new Set(); DAYS.forEach(({k}) => draft.days[k].forEach(v => v.trim() && set.add(v.trim())));
+  $("#subjects").innerHTML = [...set].map(v => `<option value="${esc(v)}">`).join("");
+}
+function setDraftStatus(msg, kind) { const el = $("#dstat"); if (el) el.innerHTML = kind ? `<span class="badge ${kind === "warn" ? "warn" : ""}">${esc(msg)}</span>` : esc(msg); }
+
+let saveTimer;
+function scheduleSave() { draft.savedAtMs = Date.now(); setDraftStatus("جارٍ حفظ المسودة…"); clearTimeout(saveTimer); saveTimer = setTimeout(saveDraft, 800); }
+async function saveDraft() {
+  try { localStorage.setItem("jadwali.draft", JSON.stringify(draft)); } catch {}
+  if (!isAdmin || !navigator.onLine) { setDraftStatus("المسودة محفوظة على هذا الجهاز فقط (لا يوجد اتصال)", "warn"); return; }
+  try {
+    await Promise.race([
+      setDoc(doc(db, "drafts", "current"), { days: draft.days, times: draft.times, savedAtMs: draft.savedAtMs, updatedAt: serverTimestamp(), by: auth.currentUser.uid }),
+      new Promise((_, rej) => setTimeout(() => rej({ code: "unavailable" }), 10000))
+    ]);
+    setDraftStatus("تم حفظ المسودة", "ok");
+  } catch (e) { setDraftStatus("محفوظة على هذا الجهاز فقط: " + errMsg(e), "warn"); }
+}
+async function loadDraft() {
+  try { const l = JSON.parse(localStorage.getItem("jadwali.draft") || "null"); if (l) draft = { ...normalize(l), savedAtMs: l.savedAtMs || 0 }; } catch {}
+  fillAdmin();
+  try {
+    const s = await getDoc(doc(db, "drafts", "current"));
+    if (s.exists() && (s.data().savedAtMs || 0) > draft.savedAtMs && route() === "admin") { draft = { ...normalize(s.data()), savedAtMs: s.data().savedAtMs }; render(); setDraftStatus("تم تحميل المسودة المحفوظة", "ok"); return; }
+  } catch {}
+  setDraftStatus(draft.savedAtMs ? "تم تحميل المسودة" : "مسودة جديدة");
+}
+
+async function publishDraft() {
+  if (publishing) return; publishing = true;
+  const btn = document.querySelector('[data-act="publish"]'); btn?.setAttribute("disabled", "");
+  try {
+    if (!navigator.onLine) throw { code: "unavailable" };
+    const ref = doc(db, "schedules", "current");
+    const snap = await getDocFromServer(ref).catch(e => { if (e?.code === "not-found") return null; throw e; });
+    const batch = writeBatch(db);
+    if (snap && snap.exists()) batch.set(doc(collection(db, "archives")), { ...snap.data(), archivedAt: serverTimestamp() });
+    const hasT = draft.times.some(t => t.start && t.end);
+    batch.set(ref, { days: draft.days, times: hasT ? draft.times : blankTimes(), publishedAt: serverTimestamp(), publishedBy: auth.currentUser.uid });
+    await batch.commit();
+    toast("تم نشر الجدول، وأُرشف الجدول السابق");
+  } catch (e) { toast("لم يتم النشر. " + errMsg(e)); }
+  finally { publishing = false; btn?.removeAttribute("disabled"); }
+}
+
+/* ===== الإعدادات وتسجيل الدخول ===== */
+function settingsSheet() {
+  const pref = applyTheme();
+  const seg = [["auto", "تلقائي"], ["light", "فاتح"], ["dark", "داكن"]].map(([k, n]) => `<button class="${pref === k ? "on" : ""}" data-act="theme" data-k="${k}">${n}</button>`).join("");
+  const adm = isAdmin
+    ? `<div class="btns" style="margin:18px 0 0"><button class="btn fill" data-act="go-admin">${ic("shield")}لوحة الإدارة</button><button class="btn ghost" data-act="logout">${ic("logout")}خروج</button></div>`
+    : `<button class="btn ghost" style="width:100%;margin-top:18px" data-act="login">${ic("lock")}دخول المدير</button>`;
+  const inst = isStandalone() ? "" : installEvt
+    ? `<button class="btn fill" style="width:100%;margin-top:18px" data-act="install">${ic("download")}تثبيت التطبيق</button>`
+    : `<p style="margin:18px 0 0;font-size:.88rem">لتثبيت التطبيق: من قائمة المتصفح اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية». على iPhone استخدم Safari ثم زر المشاركة.</p>`;
+  openSheet(`<h3>الإعدادات</h3><p>المظهر</p><div class="seg">${seg}</div>${inst}${adm}<p style="margin:18px 0 0;font-size:.82rem;text-align:center">جدولي – مدرسة الليث بن سعد، 5/2</p>`);
+}
+function loginSheet() {
+  if (!configured) { toast("أكمل إعدادات Firebase أولاً."); return; }
+  openSheet(`<h3>دخول المدير</h3><p>هذا الحساب مخصص للإدارة فقط.</p><label class="lbl" for="em">البريد الإلكتروني</label><input id="em" type="email" inputmode="email" autocomplete="username" dir="ltr"><label class="lbl" for="pw">كلمة المرور</label><input id="pw" type="password" autocomplete="current-password" dir="ltr"><div class="err" id="lerr" role="alert"></div><button class="btn fill" id="lgo" style="width:100%">تسجيل الدخول</button>`);
+  const go = async () => {
+    const em = $("#em").value.trim(), pw = $("#pw").value;
+    if (!em || !pw) { $("#lerr").textContent = "أدخل البريد وكلمة المرور."; return; }
+    $("#lgo").setAttribute("disabled", ""); $("#lerr").textContent = "";
+    try {
+      const c = await signInWithEmailAndPassword(auth, em, pw);
+      if (c.user.uid !== ADMIN_UID) { await signOut(auth); $("#lerr").textContent = "هذا الحساب غير مخوّل للإدارة."; $("#lgo").removeAttribute("disabled"); return; }
+      closeSheet(); toast("تم تسجيل الدخول"); location.hash = "#admin";
+    } catch (e) { $("#lerr").textContent = errMsg(e); $("#lgo").removeAttribute("disabled"); }
+  };
+  $("#lgo").onclick = go; $("#pw").addEventListener("keydown", e => e.key === "Enter" && go());
+}
+
+/* ===== الرسم الرئيسي ===== */
+function render() {
+  let r = route();
+  if (r === "admin" && authReady && !isAdmin) { r = "admin"; }
+  $("#appbar").innerHTML = appbar(r);
+  const v = { home: homeView, week: weekView, archive: archiveView, admin: adminView }[r]();
+  $("#view").innerHTML = v;
+  if (r === "admin" && isAdmin) fillAdmin();
+  window.scrollTo(0, 0);
+}
+function softRender() { if (route() !== "admin") { const y = scrollY; render(); scrollTo(0, y); } else if ($("#view").querySelector(".notice")) render(); }
+function hideSplash() { const s = $("#splash"); if (s) { s.classList.add("out"); setTimeout(() => s.remove(), 400); } }
+
+/* ===== الأحداث ===== */
+document.addEventListener("click", async e => {
+  const el = e.target.closest("[data-act]"); if (!el) return;
+  const a = el.dataset.act;
+  switch (a) {
+    case "home": location.hash = ""; if (!location.hash) render(); break;
+    case "go-week": location.hash = "#week"; break;
+    case "go-archive": location.hash = "#archive"; break;
+    case "go-admin": closeSheet(); location.hash = "#admin"; break;
+    case "settings": settingsSheet(); break;
+    case "install": if (installEvt) { installEvt.prompt(); await installEvt.userChoice.catch(() => {}); installEvt = null; closeSheet(); } break;
+    case "theme": try { localStorage.setItem("jadwali.theme", el.dataset.k); } catch {} settingsSheet(); break;
+    case "login": closeSheet(); loginSheet(); break;
+    case "logout": closeSheet(); await signOut(auth); toast("تم تسجيل الخروج"); location.hash = ""; break;
+    case "retry": listenCurrent(); break;
+    case "week-sel": weekSel = el.dataset.k; render(); break;
+    case "view-arch": {
+      const s = archives.find(x => x.id === el.dataset.id); if (!s) return;
+      openSheet(`<h3>جدول منشور في ${fmtDate(toDate(s.publishedAt), false)}</h3><p>نسخة للعرض فقط.</p>${table(normalize(s), null)}<button class="btn ghost" id="cl" style="width:100%;margin-top:14px">إغلاق</button>`);
+      $("#cl").onclick = closeSheet; break;
+    }
+    case "admin-day": adminDay = el.dataset.k; fillAdmin(); break;
+    case "clear-slot": { const p = +el.dataset.p; draft.days[adminDay][p] = ""; el.parentElement.querySelector("input").value = ""; scheduleSave(); break; }
+    case "clear-day":
+      if (await confirmSheet("مسح حصص " + dayName(adminDay), "<p>سيتم مسح الحصص السبع لهذا اليوم من المسودة.</p>", "مسح", true)) { draft.days[adminDay] = Array(PERIODS).fill(""); fillAdmin(); scheduleSave(); }
+      break;
+    case "copy-day": {
+      const to = $("#copyTo").value; if (to === adminDay) { toast("اختر يوماً مختلفاً للنسخ إليه."); return; }
+      if (await confirmSheet("نسخ الجدول", `<p>سيتم استبدال حصص ${dayName(to)} بحصص ${dayName(adminDay)}.</p>`, "نسخ")) { draft.days[to] = [...draft.days[adminDay]]; scheduleSave(); toast(`نُسخ ${dayName(adminDay)} إلى ${dayName(to)}`); }
+      break;
+    }
+    case "new-draft":
+      if (await confirmSheet("جدول جديد", "<p>سيتم تفريغ المسودة الحالية والبدء بجدول فارغ.</p>", "بدء جدول جديد", true)) { draft = { days: blankDays(), times: blankTimes(), savedAtMs: 0 }; render(); scheduleSave(); }
+      break;
+    case "load-current":
+      if (!current) { toast("لا يوجد جدول منشور لتحميله."); return; }
+      if (await confirmSheet("تحميل الجدول المنشور", "<p>ستُستبدل المسودة الحالية بنسخة من الجدول المنشور.</p>", "تحميل")) { draft = { ...normalize(current), savedAtMs: 0 }; render(); scheduleSave(); }
+      break;
+    case "preview":
+      openSheet(`<h3>معاينة الجدول</h3><p>هكذا سيظهر للطلاب بعد النشر.</p>${table(normalize(draft), null)}<button class="btn ghost" id="cl" style="width:100%;margin-top:14px">إغلاق</button>`);
+      $("#cl").onclick = closeSheet; break;
+    case "publish": {
+      const n = filledCount(draft.days);
+      if (!n) { toast("الجدول فارغ. أضف مادة واحدة على الأقل قبل النشر."); return; }
+      const ok = await confirmSheet("نشر الجدول؟", `<p>سيظهر هذا الجدول لجميع الطلاب فوراً، ويُنقل الجدول الحالي إلى الأرشيف.</p>${table(normalize(draft), null)}`, "نشر الآن");
+      if (ok) publishDraft();
+      break;
+    }
+  }
+});
+document.addEventListener("input", e => {
+  const t = e.target;
+  if (t.dataset.p !== undefined) { draft.days[adminDay][+t.dataset.p] = t.value; scheduleSave(); refreshSubjects(); }
+  else if (t.dataset.ts !== undefined) { const [i, k] = t.dataset.ts.split(":"); draft.times[+i][k] = t.value; scheduleSave(); }
+});
+addEventListener("hashchange", () => { closeSheet(); render(); if (route() === "admin" && isAdmin) loadDraft(); });
+addEventListener("online", () => { online = true; softRender(); });
+addEventListener("offline", () => { online = false; softRender(); });
+setInterval(() => { if (route() === "home" || route() === "week") softRender(); }, 60000);
+
+/* ===== Firebase ===== */
+let unsubCurrent = null;
+function listenCurrent() {
+  unsubCurrent?.(); loadState = "loading"; softRender();
+  unsubCurrent = onSnapshot(doc(db, "schedules", "current"), snap => {
+    if (snap.exists()) { const d = snap.data(); current = { ...normalize(d), publishedAt: d.publishedAt }; loadState = "ready"; }
+    else if (!snap.metadata.fromCache) { current = null; loadState = "empty"; }
+    else if (!current) { loadState = "loading"; return; }
+    hideSplash(); softRender();
+  }, e => { if (!current) { loadState = "error"; loadError = errMsg(e); } hideSplash(); softRender(); });
+}
+function listenArchives() {
+  onSnapshot(query(collection(db, "archives"), orderBy("archivedAt", "desc")), snap => {
+    archives = snap.docs.map(d => ({ id: d.id, ...d.data() })); archState = "ready"; if (route() === "archive") render();
+  }, e => { archState = "error"; archError = errMsg(e); if (route() === "archive") render(); });
+}
+
+applyTheme();
+render();
+if (configured) {
+  try {
+    const app = initializeApp(firebaseConfig);
+    db = initializeFirestore(app, { localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }) });
+    auth = getAuth(app);
+    listenCurrent(); listenArchives();
+    onAuthStateChanged(auth, async u => {
+      authReady = true;
+      if (u && u.uid !== ADMIN_UID) { await signOut(auth); return; }
+      isAdmin = !!u; if (route() === "admin") { render(); if (isAdmin) loadDraft(); }
+    });
+  } catch (e) { loadState = "error"; loadError = errMsg(e); hideSplash(); render(); }
+} else hideSplash();
+setTimeout(hideSplash, 4000);
+
+/* ===== PWA ===== */
+if ("serviceWorker" in navigator) {
+  const had = !!navigator.serviceWorker.controller; let reloaded = false;
+  navigator.serviceWorker.register("service-worker.js").catch(() => {});
+  navigator.serviceWorker.addEventListener("controllerchange", () => { if (had && !reloaded) { reloaded = true; location.reload(); } });
+}
+</script>
+</body>
+</html>
